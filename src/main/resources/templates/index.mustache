@@ -1,6 +1,8 @@
-{{> /layout/header}}
+{{> layout/header}}
+
 
 <div class="container p-5">
+<<<<<<< HEAD
     <h1>
         {{#sessionUser}}
             {{username}}님 반갑습니다.
@@ -14,11 +16,50 @@
             </div>
         </div>
     {{/boardList}}
+=======
+
+    <div class="mb-2 d-flex justify-content-end">
+        <form class="d-flex" action="/" method="get" onsubmit="return valid()">
+            <input id="keyword" class="form-control me-2" type="text" name="keyword" placeholder="Search" required>
+            <button class="btn btn-primary" type="submit">Search</button>
+        </form>
+    </div>
+
+    <script>
+        function isWhitespace(str) {
+            return str.trim() === '';
+        }
+
+        function valid() {
+            let keyword = document.querySelector("#keyword").value;
+            console.log(keyword);
+            if (isWhitespace(keyword)) {
+                alert('공백을 입력할 수 없습니다');
+                return false;
+            }
+        }
+    </script>
+
+    {{#boardList}}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h4 class="card-title mb-3">{{title}}</h4>
+            <a href="/board/{{id}}" class="btn btn-primary">상세보기</a>
+        </div>
+    </div>
+    {{/boardList}}
+
+
+    <!--disabled-->
+>>>>>>> 2867aa12b6ea4e573482155c016d54cfb566ed0e
     <ul class="pagination d-flex justify-content-center">
-        <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        <li class="page-item {{#first}}disabled{{/first}}"><a class="page-link"
+                href="?page={{prevPage}}&keyword={{keyword}}">Previous</a>
+        </li>
+        <li class="page-item {{#last}}disabled{{/last}}"><a class="page-link"
+                href="?page={{nextPage}}&keyword={{keyword}}">Next</a></li>
     </ul>
 
 </div>
 
-{{> /layout/footer}}
+{{> layout/footer}}

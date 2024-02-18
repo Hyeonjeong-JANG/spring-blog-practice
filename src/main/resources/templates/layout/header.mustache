@@ -12,6 +12,7 @@
 <body>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <div class="container-fluid">
+<<<<<<< HEAD
         <a class="navbar-brand" href="/">Metacoding</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
@@ -40,5 +41,36 @@
                 {{/sessionUser}}
             </ul>
         </div>
+=======
+      <a class="navbar-brand" href="/">Metacoding</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          {{#sessionUser}}
+            <li class="nav-item">
+              <a class="nav-link" href="/board/saveForm">글쓰기</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/user/updateForm">회원정보보기</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">로그아웃</a>
+            </li>
+          {{/sessionUser}}
+
+          {{^sessionUser}}
+            <li class="nav-item">
+              <a class="nav-link" href="/joinForm">회원가입</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/loginForm">로그인</a>
+            </li>
+          {{/sessionUser}}
+
+        </ul>
+      </div>
+>>>>>>> 2867aa12b6ea4e573482155c016d54cfb566ed0e
     </div>
 </nav>

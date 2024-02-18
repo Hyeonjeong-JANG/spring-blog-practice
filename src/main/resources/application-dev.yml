@@ -10,8 +10,13 @@ server:
 spring:
   mustache:
     servlet:
+<<<<<<< HEAD
       expose-request-attributes: true
       expose-session-attributes: true
+=======
+      expose-session-attributes: true
+      expose-request-attributes: true
+>>>>>>> 2867aa12b6ea4e573482155c016d54cfb566ed0e
   datasource:
     url: jdbc:h2:mem:test;MODE=MySQL
     driver-class-name: org.h2.Driver
@@ -23,7 +28,12 @@ spring:
   h2:
     console:
       enabled: true
+  sql:
+    init:
+      data-locations:
+        - classpath:db/data.sql
   jpa:
+    defer-datasource-initialization: true
     hibernate:
       ddl-auto: create
     show-sql: true
