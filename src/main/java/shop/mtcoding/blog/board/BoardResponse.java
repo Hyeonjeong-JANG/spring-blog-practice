@@ -11,4 +11,13 @@ public class BoardResponse {
         private int userId; // 유저아이디
         private String username;
     }
+
+    @Data
+    public static class DeleteDTO {
+        private int id; // 보드아이디
+        private String title;
+        private String content;
+        private int userId; // 유저아이디
+        private String username;
+    }
 }

@@ -57,4 +57,12 @@ public class BoardRepository {
 
         query.executeUpdate();
     }
+
+    @Transactional
+    public void delete(int id) {
+        String q = "delete from board_tb where id =?";
+        Query query = em.createNativeQuery(q);
+        query.setParameter(1, id);
+        query.executeUpdate();
+    }
 }

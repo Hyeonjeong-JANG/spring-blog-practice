@@ -72,4 +72,24 @@ public class BoardController {
         request.setAttribute("pageOwner", pageOwner);
         return "board/detail";
     }
+
+    //////////////////////// 게시글 삭제
+    @PostMapping("/board/{id}/delete")
+    public String delete(@PathVariable int id, HttpServletRequest request) {
+        User sessionUser = (User) session.getAttribute("sessionUser");
+        if (sessionUser == null) {
+            return "redirect:/loginForm";
+        }
+
+        BoardResponse.DetailDTO responseDTO = boardRepository.findById(id);
+        if (responseDTO.getUserId() != sessionUser.getId()) {
+            request.setAttribute("msg", "게시글을 삭제할 권한이 없습니다: ");
+            request.setAttribute("status", 403);
+            return "error/40x";
+        }
+
+        boardRepository.delete(id);
+
+        return "redirect:/";
+    }
 }
