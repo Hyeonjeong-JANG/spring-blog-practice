@@ -6,6 +6,7 @@ server:
     session:
       timeout: 30m
   port: 8080
+
 spring:
   mustache:
     servlet:
@@ -16,6 +17,9 @@ spring:
     driver-class-name: org.h2.Driver
     username: sa
     password:
+  sql:
+    init:
+      data-locations: classpath:db/data.sql
   h2:
     console:
       enabled: true
@@ -26,6 +30,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
+    defer-datasource-initialization: true
   output:
     ansi:
       enabled: always
